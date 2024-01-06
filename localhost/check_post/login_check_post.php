@@ -1,8 +1,9 @@
 <?php
-    print_r($_POST);
+    session_start();
+
+   // print_r($_POST);
     $name = $_POST['username'];
     $password = $_POST['password'];
-    echo "$name";
     if(trim($name)=="") {
         echo "Name cannot be empty. <br>" ;
     }
@@ -16,9 +17,19 @@
     echo "<br> <h1>Your data:</h1>";
     foreach($_POST as $key => $value) {
      echo "<p>$key: $value</p>";
-    
-    header("Location: ../after_login.php");
-    exit();
     }
+     $user_name = "Alex";
+    //  setcookie("user_name", $user_name, time() + 60);
+    //  print_r($_COOKIE);
 
+    $_SESSION["user_name"] = $user_name;
+    
+    if ($_SESSION["user_name"] == "Alex")
+        echo "Session started!";
+
+    
+
+    //header("Location: ../after_login.php");
+    //exit();
     }
+    echo "<br><a href=\"../form.php\">FORM</a>";
