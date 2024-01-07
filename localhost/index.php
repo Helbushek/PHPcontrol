@@ -1,4 +1,5 @@
 <?php 
+    session_start();
     $title = "Login form";
 ?>
 
@@ -50,25 +51,28 @@
             </form>
 
             <!-- форма регистрации -->
-            <form action="check_post/register_check_post.php" class="form form_signup">
+            <form action="check_post/register_check_post.php" method="post" class="form form_signup">
                 <hr width="100%" color="#f43648" size="2px"/>
                 <h3 class="form__title">Регистрация</h3>
 
                 <p>
-                    <input type="login" class="form__input" placeholder="Логин">
+                    <input type="text" name = "username" class="form__input" placeholder="Логин">
                 </p>
                 <p>
-                    <input type="email" class="form__input" placeholder="Email">
+                    <input type="email" name = "email" class="form__input" placeholder="Email">
                 </p>
                 <p>
-                    <input type="password" class="form__input" placeholder="Пароль">
-                </p>
-                <img src="C:\Users\Мишок\Downloads\free-icon-lock-5953216.png">
-                <p>
-                    <input type="password" class="form__input" placeholder="Подтвердите пароль">
+                    <input type="password" name = "password" class="form__input" placeholder="Пароль">
                 </p>
                 <p>
-                    <button class="form__btn form__btn_signup">Зарегистрироваться</button>
+                    <input type="password" name = "password2" class="form__input" placeholder="Подтвердите пароль">
+                    <?php if($_SESSION["correct_password"]==false) {
+                        echo "<div style=\"background-color: red;\">Passwords dont match</div>";
+                    }
+                    ?>
+                </p>
+                <p>
+                    <button type="submit" class="form__btn form__btn_signup">Зарегистрироваться</button>
                 </p>
             </form>
         </div>
