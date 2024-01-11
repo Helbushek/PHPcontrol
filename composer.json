@@ -1,9 +1,0 @@
-{
-    "require": {
-        "symfony/deprecation-contracts": "^3.4",
-        "psr/http-client": "^1.0",
-        "guzzlehttp/psr7": "^2.6",
-        "guzzlehttp/promises": "^2.0",
-        "guzzlehttp/guzzle": "^7.8"
-    }
-}
