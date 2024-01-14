@@ -21,5 +21,5 @@
 </x-pulse>
 
 <x-pulse>
-    @vite('resources/css/pulse/app.css')
+    @vite('resources/scss/app.scss')
 </x-pulse>
