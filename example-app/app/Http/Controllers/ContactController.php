@@ -24,7 +24,35 @@ class ContactController extends Controller {
     public function allData() {
         $contact = new Contact;
         //$contact->orderBy('id')->skip(1)->take(2)->get()
-        return view('messages', ['data'=>$contact->get()]);
+        return view('messages', ['data'=>$contact->all()]);
+    }
+
+    public function showOneMessage($id) {
+        $contact = new Contact;
+        return view('one-message', ['data'=>$contact->find($id) ]);
+    }
+
+    public function updateMessage($id) {
+        $contact = new Contact;
+        return view('update-message', ['data'=>$contact->find($id) ]);
+    }
+
+    public function updateMessageSubmit($id, ContactRequest $request) {
+        
+        $contact = Contact::find($id);
+        $contact->name = $request->input("name");
+        $contact->email = $request->input("email");
+        $contact->subject = $request->input("subject");
+        $contact->message = $request->input("message");
+
+        $contact->save();
+
+        return redirect()->route("contact-data-one", $id)->with('success', 'Сообщение было обновлено');
+    }
+
+    public function deleteMessage($id) {
+        Contact::find($id)->delete();
+        return redirect()->route('contact-data')->with('success', "Сообщение было удалено");
     }
 
 }
